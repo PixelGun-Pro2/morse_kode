@@ -6,7 +6,7 @@ import requests
 from MorseCodePy import encode
 
 # Den kode, der skal testes
-import morse
+import morse_solved as morse
 
 class TestDictionary(unittest.TestCase):
     def testMorseCode(self):
@@ -30,7 +30,7 @@ class TestTranslateStringToMorse(unittest.TestCase):
         self.assertEqual(reference, subject)
 
     def testTranslateText(self):
-        req = requests.get('https://loripsum.net/api/1/short/plaintext')
+        req = requests.get('https://baconipsum.com/api/?type=meat-and-filler&sentences=1&format=text')
         text = None
         if req.status_code == 200:
             text = req.text.strip()
@@ -50,7 +50,7 @@ class TestTranslateMorseToString(unittest.TestCase):
         self.assertEqual(reference, subject)
 
     def testTranslateText(self):
-        req = requests.get('https://loripsum.net/api/1/short/plaintext')
+        req = requests.get('https://baconipsum.com/api/?type=meat-and-filler&sentences=1&format=text')
         reference = None
         if req.status_code == 200:
             reference = req.text.strip().upper()
